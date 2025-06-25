@@ -22,7 +22,7 @@ public class ProductPage extends BasePage {
         clickButton(locator);
     }
 
-    public void goToCart(){
+    public void clickCartButton(){
         clickButton(cartButton);
     }
 }

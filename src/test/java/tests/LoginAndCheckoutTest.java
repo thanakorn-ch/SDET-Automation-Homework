@@ -29,7 +29,7 @@ public class LoginAndCheckoutTest extends BaseTest {
         productPage.sortProductPriceHighToLow();
         productPage.addProductToCart(By.id("add-to-cart-sauce-labs-fleece-jacket"));
         productPage.addProductToCart(By.id("add-to-cart-sauce-labs-backpack"));
-        productPage.goToCart();
+        productPage.clickCartButton();
         cartPage = new CartPage(driver);
         //Validate product quantity of first product
         Assert.assertTrue(cartPage.validateProductInfo(By.xpath("//div[@data-test = \"cart-list\"]//div[3]//div[@data-test=\"item-quantity\"]"), "1"));
@@ -51,9 +51,12 @@ public class LoginAndCheckoutTest extends BaseTest {
         //Validate remove button of second product
         Assert.assertTrue(cartPage.isRemoveButtonVisible(By.xpath("//button[@id=\"remove-sauce-labs-backpack\"]")));
 
-        cartPage.goToCheckoutInfoPage();
+        cartPage.clickCheckoutButton();
         checkoutInfoPage = new CheckoutInfoPage(driver);
-        checkoutInfoPage.completeCheckoutInfoAndContinue("Test", "Test", "12345");
+        checkoutInfoPage.inputFirstName("Test");
+        checkoutInfoPage.inputLastName("Test");
+        checkoutInfoPage.inputZip("12345");
+        checkoutInfoPage.clickContinueButton();
         checkoutOverviewPage = new CheckoutOverviewPage(driver);
 
         //Validate price total details, then click finish button

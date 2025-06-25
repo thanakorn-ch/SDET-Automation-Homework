@@ -19,7 +19,7 @@ public class CartPage extends BasePage {
         return isElementDisplayed(locator);
     }
 
-    public void goToCheckoutInfoPage(){
+    public void clickCheckoutButton(){
         clickButton(checkoutButton);
     }
 }
